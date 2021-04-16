@@ -13,11 +13,18 @@ export const Navbar = props => {
 	let buttonstyle = {
 		backgroundColor: "goldenrod",
 		color: "black",
-		width: "150px"
+		width: "153px",
+		marginLeft: "10px"
 	};
 
 	let buttonstyle2 = {
 		backgroundColor: "goldenrod",
+		color: "black",
+		width: "150px"
+	};
+
+	let buttonstyle3 = {
+		backgroundColor: "lightgrey",
 		color: "black",
 		width: "150px"
 	};
@@ -69,12 +76,16 @@ export const Navbar = props => {
 					</Link>
 				</div>
 				<div className="col-3">
-					<button type="button" className="btn btn-primary px-4 mr-2 mb-3" style={buttonstyle2}>
-						Register
-					</button>
-					<button type="button" className="btn btn-primary px-4  mb-3" style={buttonstyle2}>
-						Login
-					</button>
+					<Link to="/register">
+						<button type="button" className="btn btn-primary px-4 mr-2 mb-3" style={buttonstyle2}>
+							Register
+						</button>
+					</Link>
+					<Link to="/login">
+						<button type="button" className="btn btn-primary px-4  mb-3" style={buttonstyle3}>
+							Login
+						</button>
+					</Link>
 					<form className="d-flex">
 						<input
 							className="form-control"
@@ -84,7 +95,7 @@ export const Navbar = props => {
 						/>
 						<div className="dropdown">
 							<Dropdown>
-								<Dropdown.Toggle id="dropdown-basic" className="mr-2" style={buttonstyle}>
+								<Dropdown.Toggle id="dropdown-basic" style={buttonstyle}>
 									Favorites
 									<span style={favoritestyle}> {store.numberfavorites} </span>
 								</Dropdown.Toggle>

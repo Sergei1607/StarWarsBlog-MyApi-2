@@ -6,6 +6,8 @@ import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { Singlep } from "./views/singlep.js";
 import { Singlec } from "./views/singlec.js";
+import { Register } from "./views/register.js";
+import { Login } from "./views/login.js";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -25,6 +27,12 @@ const Layout = () => {
 					<Switch>
 						<Route exact path="/">
 							<Home />
+						</Route>
+						<Route exact path="/register">
+							<Register />
+						</Route>
+						<Route exact path="/login">
+							<Login />
 						</Route>
 						<Route exact path="/demo">
 							<Demo />
