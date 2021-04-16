@@ -66,7 +66,7 @@ export function Card1(props) {
 
 Card1.propTypes = {
 	title: PropTypes.string,
-	population: PropTypes.string,
+	population: PropTypes.number,
 	favorite: PropTypes.string,
 	index: PropTypes.number,
 	image: PropTypes.string

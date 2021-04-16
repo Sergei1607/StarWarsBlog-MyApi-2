@@ -27,14 +27,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 			loadSomeData: () => {
-				fetch("https://swapi.dev/api/planets/")
-					.then(res => res.json())
-					.then(data => setStore({ planets: data.results }))
-					.catch(err => console.error(err));
+				var requestOptions = {
+					method: "GET",
+					redirect: "follow"
+				};
 
-				fetch("https://swapi.dev/api/people/")
+				fetch("https://3000-turquoise-unicorn-3ppxm10d.ws-us03.gitpod.io/planets", requestOptions)
+					.then(res => res.json())
+					.then(data => setStore({ planets: data }))
+					.catch(error => console.log("error", error));
+
+				var requestOptions = {
+					method: "GET",
+					redirect: "follow"
+				};
+
+				fetch("https://3000-turquoise-unicorn-3ppxm10d.ws-us03.gitpod.io/characters", requestOptions)
 					.then(res2 => res2.json())
-					.then(data2 => setStore({ characters: data2.results }))
+					.then(data2 => setStore({ characters: data2 }))
 					.catch(err2 => console.error(err2));
 			},
 			changeColor: (index, color) => {
