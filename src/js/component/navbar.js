@@ -13,20 +13,20 @@ export const Navbar = props => {
 	let buttonstyle = {
 		backgroundColor: "goldenrod",
 		color: "black",
-		width: "153px",
+		width: "150px",
 		marginLeft: "10px"
 	};
 
 	let buttonstyle2 = {
 		backgroundColor: "goldenrod",
 		color: "black",
-		width: "150px"
+		width: "149px"
 	};
 
 	let buttonstyle3 = {
 		backgroundColor: "lightgrey",
 		color: "black",
-		width: "150px"
+		width: "149px"
 	};
 
 	let favoritestyle = {

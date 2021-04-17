@@ -32,7 +32,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("https://3000-turquoise-unicorn-3ppxm10d.ws-us03.gitpod.io/planets", requestOptions)
+				fetch("https://3000-yellow-horse-zyw3t8nq.ws-us03.gitpod.io/planets", requestOptions)
 					.then(res => res.json())
 					.then(data => setStore({ planets: data }))
 					.catch(error => console.log("error", error));
@@ -42,7 +42,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("https://3000-turquoise-unicorn-3ppxm10d.ws-us03.gitpod.io/characters", requestOptions)
+				fetch("https://3000-yellow-horse-zyw3t8nq.ws-us03.gitpod.io/characters", requestOptions)
 					.then(res2 => res2.json())
 					.then(data2 => setStore({ characters: data2 }))
 					.catch(err2 => console.error(err2));
