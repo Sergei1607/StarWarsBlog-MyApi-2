@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import "../../styles/home.scss";
 import { Context } from "../store/appContext";
 
-export function Form(props) {
+export function Form2(props) {
 	const { store, actions } = useContext(Context);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -27,7 +27,7 @@ export function Form(props) {
 		width: "150px"
 	};
 
-	function createUser() {
+	function loginUser() {
 		var myHeaders = new Headers();
 		myHeaders.append("Content-Type", "application/json");
 
@@ -43,7 +43,7 @@ export function Form(props) {
 			redirect: "follow"
 		};
 
-		fetch("https://3000-yellow-horse-zyw3t8nq.ws-us03.gitpod.io/register", requestOptions)
+		fetch("https://3000-yellow-horse-zyw3t8nq.ws-us03.gitpod.io/login", requestOptions)
 			.then(response => response.text())
 			.then(result => console.log(result))
 			.catch(error => console.log("error", error));
@@ -81,7 +81,7 @@ export function Form(props) {
 						<input className="form-control" id="exampleInputPassword1" placeholder="Password" />
 					</div>
 
-					<button type="submit" className="btn btn-primary mb-4" style={buttonstyle} onClick={createUser}>
+					<button type="submit" className="btn btn-primary mb-4" style={buttonstyle} onClick={loginUser}>
 						{props.label}
 					</button>
 				</form>
@@ -90,6 +90,6 @@ export function Form(props) {
 	);
 }
 
-Form.propTypes = {
+Form2.propTypes = {
 	label: PropTypes.string
 };
