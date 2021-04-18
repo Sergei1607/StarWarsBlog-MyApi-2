@@ -71,14 +71,16 @@ export function Form2(props) {
 						</small>
 					</div>
 					<div className="form-group">
-						<label
-							htmlFor="exampleInputPassword1"
-							style={fontstyle}
-							value={password}
-							onChange={e => setPassword(e.target.value)}>
+						<label htmlFor="exampleInputPassword1" style={fontstyle} value={password}>
 							Password
 						</label>
-						<input className="form-control" id="exampleInputPassword1" placeholder="Password" />
+						<input
+							className="form-control"
+							id="exampleInputPassword1"
+							placeholder="Password"
+							type="password"
+							onChange={e => setPassword(e.target.value)}
+						/>
 					</div>
 
 					<button type="submit" className="btn btn-primary mb-4" style={buttonstyle} onClick={loginUser}>

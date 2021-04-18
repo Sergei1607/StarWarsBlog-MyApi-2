@@ -25,6 +25,34 @@ export function Card1(props) {
 		backgroundColor: "rgb(159, 158, 155)"
 	};
 
+	function addfavoriteplanettodatabase() {
+		var myHeaders = new Headers();
+		myHeaders.append(
+			"Authorization",
+			"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxODcxMzE2MSwianRpIjoiNzllNTgzOGUtYzc5OS00OWVmLThkYjQtMDE3MDkxZjc0OTJmIiwibmJmIjoxNjE4NzEzMTYxLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjozLCJleHAiOjE2MTg3MTQwNjF9.ksp3Ro-EL1Y0CtJz48dqqEuYuQWAW1qh1FmS9z49uII"
+		);
+		myHeaders.append("Content-Type", "application/json");
+		myHeaders.append("Access-Control-Allow-Origin", "*");
+
+		console.log(index);
+
+		var raw = JSON.stringify({
+			planetid: index + 1
+		});
+
+		var requestOptions = {
+			method: "POST",
+			headers: myHeaders,
+			body: raw,
+			redirect: "follow"
+		};
+
+		fetch("https://3000-yellow-horse-zyw3t8nq.ws-us03.gitpod.io/addfavoriteplanet", requestOptions)
+			.then(response => response.text())
+			.then(result => console.log(result))
+			.catch(error => console.log("error", error));
+	}
+
 	return (
 		<div className="col-3 ">
 			<div className="card">
@@ -48,6 +76,7 @@ export function Card1(props) {
 									actions.sumFavorites();
 									actions.setplanetindex(index);
 									actions.setlistFavoritesPlanets(favorite);
+									addfavoriteplanettodatabase();
 								} else {
 									seticonColor("white");
 									setFavorite(props.favorite);
