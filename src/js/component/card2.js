@@ -26,6 +26,34 @@ export function Card2(props) {
 		backgroundColor: "rgb(159, 158, 155)"
 	};
 
+	function addfavoritecharactertodatabase() {
+		var myHeaders = new Headers();
+		myHeaders.append(
+			"Authorization",
+			"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxODc2MDA1NCwianRpIjoiMjY0YWU1Y2ItZmFkMi00NDQzLTk0MWEtN2Y1ZDc2ZjlkZTk3IiwibmJmIjoxNjE4NzYwMDU0LCJ0eXBlIjoiYWNjZXNzIiwic3ViIjo0LCJleHAiOjE2MTg3NjA5NTR9.apB1ryFN_UtDqv9c4zBbheT798nB-3E7kXvUbUXF4-w"
+		);
+		myHeaders.append("Content-Type", "application/json");
+		myHeaders.append("Access-Control-Allow-Origin", "*");
+
+		console.log(index);
+
+		var raw = JSON.stringify({
+			characterid: index + 1
+		});
+
+		var requestOptions = {
+			method: "POST",
+			headers: myHeaders,
+			body: raw,
+			redirect: "follow"
+		};
+
+		fetch("https://3000-yellow-horse-zyw3t8nq.ws-us03.gitpod.io/addfavoritecharacter", requestOptions)
+			.then(response => response.text())
+			.then(result => console.log(result))
+			.catch(error => console.log("error", error));
+	}
+
 	return (
 		<div className="col-3 ">
 			<div className="card">
@@ -51,6 +79,7 @@ export function Card2(props) {
 									actions.sumFavorites();
 									actions.setcharacterindex(index);
 									actions.setlistFavoritesCharacters(favorite);
+									addfavoritecharactertodatabase();
 								} else {
 									seticonColor("white");
 									setFavorite(props.favorite);
