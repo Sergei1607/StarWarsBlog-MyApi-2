@@ -28,25 +28,8 @@ export function Form2(props) {
 	};
 
 	function loginUser() {
-		var myHeaders = new Headers();
-		myHeaders.append("Content-Type", "application/json");
-
-		var raw = JSON.stringify({
-			email: email,
-			password: password
-		});
-
-		var requestOptions = {
-			method: "POST",
-			headers: myHeaders,
-			body: raw,
-			redirect: "follow"
-		};
-
-		fetch("https://3000-yellow-horse-zyw3t8nq.ws-us03.gitpod.io/login", requestOptions)
-			.then(response => response.text())
-			.then(result => console.log(result))
-			.catch(error => console.log("error", error));
+		actions.loginUser(email, password);
+		console.log(store.token);
 	}
 
 	return (
