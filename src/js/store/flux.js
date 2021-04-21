@@ -19,8 +19,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			favoritescharacters: [],
 			numberfavorites: 0,
 			planetsindex: [],
-			characterindex: [],
-			token: []
+			characterindex: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -129,6 +128,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 			loginUser(email, password) {
+				const store = getStore();
+
 				var myHeaders = new Headers();
 				myHeaders.append("Content-Type", "application/json");
 
@@ -146,10 +147,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				fetch("https://3000-yellow-horse-zyw3t8nq.ws-us03.gitpod.io/login", requestOptions)
 					.then(response => response.json())
-					.then(result => window.localStorage.setItem("token", JSON.stringify(response.token)))
+					.then(result => sessionStorage.setItem("token", result.token))
 					.catch(error => console.log("error", error));
+			},
+			deletefavoritefromdatabase(index) {
+				var myHeaders = new Headers();
+				myHeaders.append("Authorization", "Bearer " + sessionStorage.getItem("token"));
+				myHeaders.append("Content-Type", "application/json");
 
-				setStore({ token: window.localStorage.getItem("token") });
+				var raw = JSON.stringify({
+					planetid: index + 1
+				});
+
+				var requestOptions = {
+					method: "DELETE",
+					headers: myHeaders,
+					body: raw,
+					redirect: "follow"
+				};
+
+				fetch("https://3000-yellow-horse-zyw3t8nq.ws-us03.gitpod.io/deletefavoriteplanet", requestOptions)
+					.then(response => response.text())
+					.then(result => console.log(result))
+					.catch(error => console.log("error", error));
 			}
 		}
 	};

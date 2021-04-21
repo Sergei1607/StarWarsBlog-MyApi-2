@@ -26,11 +26,9 @@ export function Card1(props) {
 	};
 
 	function addfavoriteplanettodatabase() {
+		console.log(sessionStorage.getItem("token"));
 		var myHeaders = new Headers();
-		myHeaders.append(
-			"Authorization",
-			"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxODc2MDA1NCwianRpIjoiMjY0YWU1Y2ItZmFkMi00NDQzLTk0MWEtN2Y1ZDc2ZjlkZTk3IiwibmJmIjoxNjE4NzYwMDU0LCJ0eXBlIjoiYWNjZXNzIiwic3ViIjo0LCJleHAiOjE2MTg3NjA5NTR9.apB1ryFN_UtDqv9c4zBbheT798nB-3E7kXvUbUXF4-w"
-		);
+		myHeaders.append("Authorization", "Bearer " + sessionStorage.getItem("token"));
 		myHeaders.append("Content-Type", "application/json");
 		myHeaders.append("Access-Control-Allow-Origin", "*");
 
@@ -69,7 +67,9 @@ export function Card1(props) {
 						<i
 							className="fas fa-star"
 							onClick={() => {
-								if (iconcolor == "white") {
+								if (sessionStorage.getItem("token") == null) {
+									alert("Please Login to add favorites");
+								} else if (sessionStorage.getItem("token") != null && iconcolor == "white") {
 									seticonColor("yellow");
 									setFavorite(props.favorite);
 									setIndex(props.index);
@@ -83,6 +83,7 @@ export function Card1(props) {
 									actions.lessFavorites();
 									actions.removelistFavoritesPlanets([favorite]);
 									actions.removePlanetsindex(index);
+									actions.deletefavoritefromdatabase(index);
 								}
 							}}
 						/>

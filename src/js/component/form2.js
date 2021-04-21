@@ -29,7 +29,7 @@ export function Form2(props) {
 
 	function loginUser() {
 		actions.loginUser(email, password);
-		console.log(store.token);
+		console.log(sessionStorage.getItem("token"));
 	}
 
 	return (
