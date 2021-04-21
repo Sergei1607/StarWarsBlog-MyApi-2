@@ -86,6 +86,7 @@ export function Card2(props) {
 									actions.lessFavorites();
 									actions.removelistFavoritesCharacters([favorite]);
 									actions.removecharacterindex(index);
+									actions.deletefavoritefromdatabase(index);
 								}
 							}}
 						/>

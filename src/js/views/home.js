@@ -7,6 +7,7 @@ import { Card2 } from "../component/card2.js";
 import { Context } from "../store/appContext";
 
 export const Home = () => {
+	const { store, actions } = useContext(Context);
 	let imagearrayplanets = [
 		"https://i1.wp.com/www.sopitas.com/wp-content/uploads/2013/05/Tatooine-06.jpg",
 		"http://pm1.narvii.com/7085/faea62f605034f7bd132dc8a59a6b2be07bdb694r1-950-672v2_uhq.jpg",
@@ -32,8 +33,6 @@ export const Home = () => {
 		"https://pbs.twimg.com/media/EouvaiYVoAAmmQ0.jpg",
 		"https://i.blogs.es/cd0fbf/ewan/1366_2000.jpeg"
 	];
-
-	const { store, actions } = useContext(Context);
 
 	let backstyle = {
 		backgroundColor: "rgb(37, 36, 36 )"
@@ -63,6 +62,7 @@ export const Home = () => {
 			</div>
 			<h1 className="my-5">Characters</h1>
 			<div className="row" style={over}>
+				<button onClick={actions.getfavorites}>Click</button>
 				{store.characters.map((item, index) => {
 					return (
 						<Card2

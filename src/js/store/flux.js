@@ -19,7 +19,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			favoritescharacters: [],
 			numberfavorites: 0,
 			planetsindex: [],
-			characterindex: []
+			characterindex: [],
+			favorites: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -64,7 +65,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			setlistFavoritesPlanets(val) {
 				const store = getStore();
-				let newfavoritelist = [...store.favoritesplanets, val];
 				setStore({ favoritesplanets: [...store.favoritesplanets, val] });
 			},
 
@@ -128,8 +128,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 			loginUser(email, password) {
-				const store = getStore();
-
 				var myHeaders = new Headers();
 				myHeaders.append("Content-Type", "application/json");
 
@@ -149,6 +147,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.json())
 					.then(result => sessionStorage.setItem("token", result.token))
 					.catch(error => console.log("error", error));
+			},
+
+			getfavorites() {
+				const store = getStore();
+				let counter = 0;
+				var myHeaders = new Headers();
+				myHeaders.append("Authorization", "Bearer " + sessionStorage.getItem("token"));
+
+				myHeaders.append("Content-Type", "application/json");
+
+				var requestOptions = {
+					method: "GET",
+					headers: myHeaders,
+					redirect: "follow"
+				};
+
+				fetch("https://3000-yellow-horse-zyw3t8nq.ws-us03.gitpod.io/getfavorites", requestOptions)
+					.then(response => response.json())
+					.then(result => setStore({ favorites: result }))
+					.then(console.log(store.planets[0]))
+					.then(console.log(store.favorites))
+					.catch(error => console.log("error", error));
+
+				for (let i in store.planets) {
+					counter++;
+					console.log(counter);
+				}
 			},
 			deletefavoritefromdatabase(index) {
 				var myHeaders = new Headers();

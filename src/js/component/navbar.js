@@ -5,6 +5,14 @@ import { Context } from "../store/appContext";
 
 export const Navbar = props => {
 	const { store, actions } = useContext(Context);
+
+	let counter = 0;
+	function count() {
+		for (let i in store.favorites) {
+			counter++;
+		}
+		return counter;
+	}
 	let iconstyle = {
 		color: "goldenrod",
 		height: "100px"
@@ -97,7 +105,7 @@ export const Navbar = props => {
 							<Dropdown>
 								<Dropdown.Toggle id="dropdown-basic" style={buttonstyle}>
 									Favorites
-									<span style={favoritestyle}> {store.numberfavorites} </span>
+									<span style={favoritestyle}>{count()}</span>
 								</Dropdown.Toggle>
 
 								<Dropdown.Menu>
