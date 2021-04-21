@@ -6,6 +6,10 @@ import { Context } from "../store/appContext";
 export const Navbar = props => {
 	const { store, actions } = useContext(Context);
 
+	let planets = store.planets.map((item, index) => {
+		return item.name;
+	});
+
 	let counter = 0;
 	function count() {
 		for (let i in store.favorites) {
@@ -110,10 +114,12 @@ export const Navbar = props => {
 
 								<Dropdown.Menu>
 									<p className="text-center bg-warning">Planets</p>
-									{store.favoritesplanets.map((item, index) => {
+									{store.favorites.map((item, index) => {
 										return (
-											<Link to={"/singlep/" + store.planetsindex[index]} key={index}>
-												<Dropdown.Item href="#/action-1">{item}</Dropdown.Item>
+											<Link to={"/singlep/" + (item.planet_id - 1)} key={index}>
+												<Dropdown.Item href="#/action-1">
+													{planets[item.planet_id - 1]}
+												</Dropdown.Item>
 											</Link>
 										);
 									})}

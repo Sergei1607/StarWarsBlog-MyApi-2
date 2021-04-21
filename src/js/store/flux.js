@@ -169,11 +169,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(console.log(store.planets[0]))
 					.then(console.log(store.favorites))
 					.catch(error => console.log("error", error));
-
-				for (let i in store.planets) {
-					counter++;
-					console.log(counter);
-				}
 			},
 			deletefavoritefromdatabase(index) {
 				var myHeaders = new Headers();
