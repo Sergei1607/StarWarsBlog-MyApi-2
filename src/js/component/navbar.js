@@ -10,6 +10,30 @@ export const Navbar = props => {
 		return item.name;
 	});
 
+	let favoriteplanets = store.favorites.map((item, index) => {
+		if (item.planet_id != null) {
+			return item.planet_id;
+		}
+	});
+
+	let favoriteplanets2 = favoriteplanets.filter(item => {
+		return item !== undefined;
+	});
+
+	let characters = store.characters.map((item, index) => {
+		return item.name;
+	});
+
+	let favoritecharacters = store.favorites.map((item, index) => {
+		if (item.character_id != null) {
+			return item.character_id;
+		}
+	});
+
+	let favoritecharacters2 = favoritecharacters.filter(item => {
+		return item !== undefined;
+	});
+
 	let counter = 0;
 	function count() {
 		for (let i in store.favorites) {
@@ -114,21 +138,19 @@ export const Navbar = props => {
 
 								<Dropdown.Menu>
 									<p className="text-center bg-warning">Planets</p>
-									{store.favorites.map((item, index) => {
+									{favoriteplanets2.map((item, index) => {
 										return (
-											<Link to={"/singlep/" + (item.planet_id - 1)} key={index}>
-												<Dropdown.Item href="#/action-1">
-													{planets[item.planet_id - 1]}
-												</Dropdown.Item>
+											<Link to={"/singlep/" + (item - 1)} key={index}>
+												<Dropdown.Item href="#/action-1">{planets[item - 1]}</Dropdown.Item>
 											</Link>
 										);
 									})}
 									<hr className="my-4 bg-warning" />
 									<p className="text-center bg-warning">Characters</p>
-									{store.favoritescharacters.map((item, index) => {
+									{favoritecharacters2.map((item, index) => {
 										return (
-											<Link to={"/singlec/" + store.characterindex[index]} key={index}>
-												<Dropdown.Item href="#/action-1">{item}</Dropdown.Item>
+											<Link to={"/singlec/" + (item - 1)} key={index}>
+												<Dropdown.Item href="#/action-1">{characters[item - 1]}</Dropdown.Item>
 											</Link>
 										);
 									})}

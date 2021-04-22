@@ -166,7 +166,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch("https://3000-yellow-horse-zyw3t8nq.ws-us03.gitpod.io/getfavorites", requestOptions)
 					.then(response => response.json())
 					.then(result => setStore({ favorites: result }))
-					.then(console.log(store.planets[0]))
 					.then(console.log(store.favorites))
 					.catch(error => console.log("error", error));
 			},
