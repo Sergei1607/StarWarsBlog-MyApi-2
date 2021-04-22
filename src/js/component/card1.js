@@ -73,16 +73,10 @@ export function Card1(props) {
 									seticonColor("yellow");
 									setFavorite(props.favorite);
 									setIndex(props.index);
-									actions.sumFavorites();
-									actions.setplanetindex(index);
-									actions.setlistFavoritesPlanets(favorite);
 									addfavoriteplanettodatabase();
 								} else {
 									seticonColor("white");
 									setFavorite(props.favorite);
-									actions.lessFavorites();
-									actions.removelistFavoritesPlanets([favorite]);
-									actions.removePlanetsindex(index);
 									actions.deletefavoritefromdatabase(index);
 								}
 							}}
@@ -99,5 +93,6 @@ Card1.propTypes = {
 	population: PropTypes.number,
 	favorite: PropTypes.string,
 	index: PropTypes.number,
-	image: PropTypes.string
+	image: PropTypes.string,
+	color: PropTypes.string
 };

@@ -8,6 +8,17 @@ import { Context } from "../store/appContext";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
+
+	let favoriteplanets = store.favorites.map((item, index) => {
+		if (item.planet_id != null) {
+			return item.planet_id;
+		}
+	});
+
+	let favoriteplanets2 = favoriteplanets.filter(item => {
+		return item !== undefined;
+	});
+
 	let imagearrayplanets = [
 		"https://i1.wp.com/www.sopitas.com/wp-content/uploads/2013/05/Tatooine-06.jpg",
 		"http://pm1.narvii.com/7085/faea62f605034f7bd132dc8a59a6b2be07bdb694r1-950-672v2_uhq.jpg",

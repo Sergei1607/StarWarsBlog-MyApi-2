@@ -76,16 +76,10 @@ export function Card2(props) {
 									seticonColor("yellow");
 									setFavorite(props.favorite);
 									setIndex(props.index);
-									actions.sumFavorites();
-									actions.setcharacterindex(index);
-									actions.setlistFavoritesCharacters(favorite);
 									addfavoritecharactertodatabase();
 								} else {
 									seticonColor("white");
 									setFavorite(props.favorite);
-									actions.lessFavorites();
-									actions.removelistFavoritesCharacters([favorite]);
-									actions.removecharacterindex(index);
 									actions.deletefavoritefromdatabase(index);
 								}
 							}}

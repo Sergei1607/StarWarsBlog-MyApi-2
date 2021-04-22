@@ -15,13 +15,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			planets: [],
 			characters: [],
-			favoritesplanets: [],
-			favoritescharacters: [],
-			numberfavorites: 0,
-			planetsindex: [],
-			characterindex: [],
 			favorites: []
 		},
+
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
@@ -61,71 +57,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
-			},
-
-			setlistFavoritesPlanets(val) {
-				const store = getStore();
-				setStore({ favoritesplanets: [...store.favoritesplanets, val] });
-			},
-
-			setlistFavoritesCharacters(val) {
-				const store = getStore();
-				setStore({ favoritescharacters: [...store.favoritescharacters, val] });
-			},
-
-			removelistFavoritesPlanets(val) {
-				const store = getStore();
-				setStore({
-					favoritesplanets: store.favoritesplanets.filter(item => {
-						return item !== val.toString();
-					})
-				});
-			},
-
-			removelistFavoritesCharacters(val) {
-				const store = getStore();
-				setStore({
-					favoritescharacters: store.favoritescharacters.filter(item => {
-						return item !== val.toString();
-					})
-				});
-			},
-			sumFavorites() {
-				const store = getStore();
-				setStore({ numberfavorites: store.numberfavorites + 1 });
-			},
-
-			lessFavorites() {
-				const store = getStore();
-				setStore({ numberfavorites: store.numberfavorites - 1 });
-			},
-
-			setplanetindex(val) {
-				const store = getStore();
-				setStore({ planetsindex: [...store.planetsindex, val] });
-			},
-
-			removePlanetsindex(val) {
-				const store = getStore();
-				setStore({
-					planetsindex: store.planetsindex.filter(item => {
-						return item !== val;
-					})
-				});
-			},
-
-			setcharacterindex(val) {
-				const store = getStore();
-				setStore({ characterindex: [...store.characterindex, val] });
-			},
-
-			removecharacterindex(val) {
-				const store = getStore();
-				setStore({
-					characterindex: store.characterindex.filter(item => {
-						return item !== val;
-					})
-				});
 			},
 			loginUser(email, password) {
 				var myHeaders = new Headers();
